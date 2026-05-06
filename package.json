@@ -1,0 +1,27 @@
+{
+  "name": "backendcourse",
+  "version": "1.0.0",
+  "description": "This repository is based on my practice working with backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iskaiah/BackendCourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Iskaiah/BackendCourse/issues"
+  },
+  "homepage": "https://github.com/Iskaiah/BackendCourse#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
