@@ -42,3 +42,4 @@ desktop.ini
 
 # ── Vite cache ────────────────────────────────────────────
 .vite/
+/src/generated/prisma
