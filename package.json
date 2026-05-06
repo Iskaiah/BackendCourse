@@ -4,7 +4,8 @@
   "description": "This repository is based on my practice working with backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
