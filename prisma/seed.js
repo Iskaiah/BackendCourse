@@ -1,6 +1,6 @@
 import 'dotenv/config'; // First
 
-import { prisma, disconnectDB } from '../config/db.js'; // ✅ Use configured instance
+import { prisma, disconnectDB } from '../src/config/db.js';
 
 const userId = "78f167a5-2cda-4ae8-93af-2cf247fd32f2";
 
@@ -9,11 +9,11 @@ const movies = [
         title: "The Matrix",
         overview: "A computer hacker learns about the true nature of reality",
         releaseYear: 1999,
-        genre: "Action, Sci-Fi",
+        genres: ["Action", "Sci-Fi"],
         runtime: 136,
         posterUrl: "https://example.com/matrix.jpg",
         createdBy: userId,
-    }
+    },
 ];
 
 const main = async () => {
