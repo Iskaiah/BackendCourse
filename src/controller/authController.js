@@ -1,4 +1,5 @@
 import { prisma } from '../config/db.js';
+import bcrypt from 'bcryptjs';
 
 const register = async (req, res) => {
 
@@ -14,6 +15,9 @@ const register = async (req, res) => {
             .status(400)
             .json({ error: "User already exists with this email" });
    }
+
+   // Hash the password before saving to the database
+
 };
 
 export { register };
