@@ -61,8 +61,21 @@ const login = async (req, res) => {
     if (!isPasswordValid) {
         return res
             .status(401)
-            .json({ message: "Invalid email or password" });
+            .json({ message: "Invalid password" });
     }
+
+    // generate JWT token
+    
+
+    res.status(201).json({
+        status: "success",
+        data: {
+            user: {
+                id: user.id,
+                email: email,
+            },
+        },
+    });
 }
 
 export { register, login };
