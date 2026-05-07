@@ -1,12 +1,11 @@
+import 'dotenv/config'; 
+
 import express from 'express';
-import { config } from 'dotenv';
 import { connectDB, disconnectDB } from './config/db.js';
 
 // Import Routes
 import movieRoutes from './routes/movieRoutes.js';
 import authRoutes from './routes/authRoutes.js';
-
-config(); 
 
 connectDB();
 
@@ -20,22 +19,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/movies", movieRoutes);
 app.use("/auth", authRoutes);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+// Capture server instance
+const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-// handle unhandled promise rejections
+// Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {
     console.error("Unhandled Rejection:", err);
-    server.close( async () => {
+    server.close(async () => { // server is now defined
         await disconnectDB();
         process.exit(1);
     });
 });
 
-// handle uncaught exceptions
+// Handle uncaught exceptions
 process.on("uncaughtException", async (err) => {
     console.error("Uncaught Exception:", err);
     await disconnectDB();
@@ -45,7 +45,7 @@ process.on("uncaughtException", async (err) => {
 // Graceful shutdown
 process.on("SIGTERM", async () => {
     console.log("SIGTERM received, shutting down gracefully...");
-    server.close( async () => {
+    server.close(async () => { //  server is now defined
         await disconnectDB();
         console.log("Server closed, database disconnected. Exiting process.");
         process.exit(0);
