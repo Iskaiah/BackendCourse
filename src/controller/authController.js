@@ -26,9 +26,15 @@ const register = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-        }
-   })
+        },
+   });
 
+   res.status(201).json({ 
+        status: "success",
+        data: {
+            
+        }
+    });
 };
 
 export { register };
