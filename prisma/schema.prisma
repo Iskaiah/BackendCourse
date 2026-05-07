@@ -19,6 +19,10 @@ model User {
   password String
 
   createdAt DateTime @default(now())
+
+  // Relations
+  movies Movie[] @relation("MovieCreator")
+  watchlistItems WatchlistItem[]
 }
 
 model Movie {
@@ -31,6 +35,10 @@ model Movie {
   posterUrl String?
   createdBy String
   createdAt DateTime @default(now())
+
+  // Relations
+  creator User @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+  watchlistItems WatchlistItem[]
 }
 
 model WatchlistItem {
@@ -43,6 +51,9 @@ model WatchlistItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 }
 
 enum WatchlistStatus {
